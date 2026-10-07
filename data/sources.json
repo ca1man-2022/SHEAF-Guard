@@ -1,0 +1,24 @@
+{
+  "stackexchange": {
+    "dataset": "StackExchange question/title and best-voted answer",
+    "acquisition_url": "https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_title_best_voted_answer_jsonl",
+    "license_guidance": "https://stackoverflow.com/help/licensing",
+    "dataset_card_license": "cc-by-nc-sa-4.0",
+    "status": "No text redistributed; inspected records lack per-post attribution and license version. Dataset-card and original-site license scope need reconciliation."
+  },
+  "msmarco": {
+    "dataset": "MS MARCO, domain-specific subsets",
+    "acquisition_url": "https://huggingface.co/datasets/microsoft/ms_marco",
+    "domain_mapping_url": "https://github.com/ibm-aur-nlp/domain-specific-QA",
+    "status": "No text redistributed; query redistribution not cleared for this candidate."
+  },
+  "substance_use": {
+    "dataset": "Substance Use clean and LLM-attack",
+    "protocol_repository": "https://github.com/chateval/rag_safety_pca",
+    "status": "No text redistributed; sensitive narratives excluded and redistribution rights not established."
+  },
+  "synthetic": {
+    "dataset": "Two invented schema fixtures",
+    "status": "Synthetic, not benchmark data"
+  }
+}

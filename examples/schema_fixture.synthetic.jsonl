@@ -1,0 +1,2 @@
+{"example_id":"synthetic-1","task":"synthetic-scope","target_domain":"toy-colors","source_domain":"toy-colors","query":"Which color is the toy square?","label":0,"label_provenance":"synthetic_fixture","source_ref":"synthetic"}
+{"example_id":"synthetic-2","task":"synthetic-scope","target_domain":"toy-colors","source_domain":"toy-shapes","query":"How many sides does the toy polygon have?","label":1,"label_provenance":"synthetic_fixture","source_ref":"synthetic"}

@@ -1,0 +1,2 @@
+# Tested with Python 3.11.16; external dependency, not vendored.
+numpy==2.4.6

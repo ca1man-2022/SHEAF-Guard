@@ -1,0 +1,33 @@
+{
+  "datasets": [
+    {
+      "dataset": "StackExchange",
+      "domains": 8,
+      "ood_source": "cross-domain source protocol",
+      "test_instances": 18060
+    },
+    {
+      "dataset": "MS MARCO",
+      "domains": 6,
+      "ood_source": "cross-domain source protocol",
+      "test_instances": 11744
+    },
+    {
+      "dataset": "Substance Use",
+      "domains": 1,
+      "ood_source": "cross-domain source protocol",
+      "test_instances": 126
+    },
+    {
+      "dataset": "Substance Use LLM-attack",
+      "domains": 1,
+      "ood_source": "LLM-attack source protocol",
+      "test_instances": 108
+    }
+  ],
+  "real_samples_distributed": 0,
+  "count_unit": "target-task test instances, not globally unique queries",
+  "clean_pool_domains": 15,
+  "coverage": "available clean pool; not the full author 16-domain setting",
+  "label_provenance": "source_protocol"
+}
