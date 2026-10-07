@@ -1,6 +1,5 @@
 # SHEAF-Guard 
 
-## Included components
 
 | Component | Description |
 |---|---|
@@ -8,7 +7,7 @@
 | `sheaf_guard/data_io.py` | JSONL reader and display-schema validator. |
 | `examples/demo_extension.py` | Executable calculation on explicitly synthetic tensors. |
 | `examples/inspect_data.py` | Schema and actual sample-availability inspection. |
-| `data/` | Dataset-level counts, schema and source references; no real query text. |
+| `data/` | Dataset-level counts, schema and source references. |
 | `tests/test_preview.py` | Numerical and data-interface unit tests. |
 
 ## Running the preview
