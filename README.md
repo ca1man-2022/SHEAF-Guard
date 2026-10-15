@@ -1,51 +1,57 @@
 # SxHxExAxFx-Gxuxaxrxdx 
 
 
-| Component | Description |
-|---|---|
-| `sheaf_guard/energy.py` | Standalone adaptation of single-query, single-scale extension and energy readout. |
-| `sheaf_guard/data_io.py` | JSONL reader and display-schema validator. |
-| `examples/demo_extension.py` | Executable calculation on explicitly synthetic tensors. |
-| `examples/inspect_data.py` | Schema and actual sample-availability inspection. |
-| `data/` | Dataset-level counts, schema and source references. |
-| `tests/test_preview.py` | Numerical and data-interface unit tests. |
+## Quick start
 
-## Running the preview
-
-From this directory, with Python and NumPy available:
+From the repository root:
 
 ```bash
+python -m pip install -r requirements.txt
 python -B -m examples.demo_extension
 python -B -m examples.inspect_data
 python -B -m unittest discover -s tests -v
 ```
 
-The tested versions are recorded in `requirements.txt`. No model download,
-network access or API credentials are required. The tests check this excerpt,
-not the paper's benchmark results.
+`demo_extension` evaluates the two class hypotheses on synthetic inputs.
+`inspect_data` prints the query-record schema metadata. The tests check the
+numerical routines and the data reader.
 
-## Numerical scope
+## CSEM extension
 
-Inputs are an existing query coordinate `u` of shape `(d,)`, context maps `R`
-of shape `(M,d,d)`, class-conditional boundaries `b` of shape `(M,2,d)` and
-a positive fidelity coefficient. Class 0 is ID and class 1 is OOD.
+```python
+from sheaf_guard_preview import extension, compatibility_readout
 
-For each class, the routine minimizes
-`fidelity * ||z-u||^2 + mean_e ||R[e] z-b[e,c]||^2`.
-It solves the shared positive-definite linear system with NumPy Cholesky
-factorization. The returned features are `E_ID - E_OOD` and
-`min(E_ID, E_OOD)`, without calibration or classification.
+result = extension(query, maps, boundaries, fidelity)
+features = compatibility_readout(result["energies"])
+```
 
-The frozen calculation uses uniform context weights. Optional supplied
-weights must equal `1/M`; nonuniform weights are rejected rather than
-silently changing the objective. The demonstration uses tiny invented
-arrays, not trained memories, real embeddings or a complete OOD detector.
+| Input | Shape | Description |
+| --- | --- | --- |
+| `query` | `(d,)` | Query coordinate $u$ |
+| `maps` | `(M, d, d)` | Context restriction matrices $R_e$ |
+| `boundaries` | `(M, 2, d)` | Boundary values $b_{e,c}$ for ID ($c=0$) and OOD ($c=1$) |
+| `fidelity` | scalar | Positive coefficient $\lambda$ |
+
+At one memory scale, the solver minimizes
+
+$$
+E_c=\min_z\left[\lambda\lVert z-u\rVert_2^2+
+\frac{1}{M}\sum_{e=1}^{M}\lVert R_ez-b_{e,c}\rVert_2^2\right].
+$$
+
+It solves the shared positive-definite system by Cholesky factorization in
+float64 and returns the class energies, extension states, and diagnostic arrays.
+Context weights are uniform; the optional `weights` argument accepts only
+$w_e=1/M$. The compatibility readout produces the two downstream features
+$[E_0-E_1,\min(E_0,E_1)]$.
 
 ## Data
 
-Source attribution and redistribution clearance are incomplete; see
-`data/README.md` and `data/sources.json`. Two separately named synthetic
-fixtures exercise the interface and are not benchmark examples.
+The [data guide](data/README.md) lists dataset statistics, source references, and
+the JSONL record format. Two synthetic records are included for reader tests;
+benchmark datasets are obtained separately from the listed sources.
 
-`data/schema.json` is a preview display format, not the original CSV schema.
-ID is `0`, OOD is `1`.
+## Attribution
+
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for dependency, data, and
+code-license information.
