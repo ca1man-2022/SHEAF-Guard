@@ -1,0 +1,24 @@
+{
+  "stackexchange": {
+    "dataset": "StackExchange question titles and best-voted answers",
+    "acquisition_url": "https://huggingface.co/datasets/flax-sentence-embeddings/stackexchange_title_best_voted_answer_jsonl",
+    "license_guidance": "https://stackoverflow.com/help/licensing",
+    "text_included": false
+  },
+  "msmarco": {
+    "dataset": "MS MARCO, domain-specific subsets",
+    "acquisition_url": "https://huggingface.co/datasets/microsoft/ms_marco",
+    "domain_mapping_url": "https://github.com/ibm-aur-nlp/domain-specific-QA",
+    "text_included": false
+  },
+  "substance_use": {
+    "dataset": "Substance Use clean and LLM-attack",
+    "protocol_repository": "https://github.com/chateval/rag_safety_pca",
+    "text_included": false
+  },
+  "synthetic": {
+    "dataset": "Two synthetic query-record examples",
+    "text_included": true,
+    "benchmark_data": false
+  }
+}

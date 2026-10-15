@@ -1,4 +1,3 @@
-"""Synthetic-only tests; no private imports, training or network."""
 import copy
 import tempfile
 import unittest

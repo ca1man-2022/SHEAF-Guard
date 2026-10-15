@@ -1,0 +1,51 @@
+{
+  "title": "Preview query record (display interface)",
+  "type": "object",
+  "required": [
+    "example_id",
+    "task",
+    "target_domain",
+    "query",
+    "label",
+    "label_provenance",
+    "source_ref"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "example_id": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "task": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "target_domain": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "query": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "label": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "label_provenance": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "source_ref": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "source_domain": {
+      "type": "string",
+      "pattern": "\\S"
+    }
+  }
+}
